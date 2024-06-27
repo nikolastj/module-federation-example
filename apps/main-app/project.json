@@ -20,7 +20,8 @@
           {
             "glob": "**/*",
             "input": "apps/main-app/public"
-          }
+          },
+          "apps/main-app/src/assets"
         ],
         "styles": ["apps/main-app/src/styles.scss"],
         "scripts": [],
