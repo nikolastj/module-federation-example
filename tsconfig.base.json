@@ -17,6 +17,9 @@
     "paths": {
       "exceptions/Routes": [
         "apps/exceptions/src/app/remote-entry/entry.routes.ts"
+      ],
+      "index-build/Routes": [
+        "apps/index-build/src/app/remote-entry/entry.routes.ts"
       ]
     }
   },

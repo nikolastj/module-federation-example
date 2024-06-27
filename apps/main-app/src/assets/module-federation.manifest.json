@@ -1,3 +1,4 @@
 {
-    "exceptions": "http://localhost:4203"
-  }
+  "exceptions": "http://localhost:4203",
+  "index-build": "http://localhost:4201"
+}
