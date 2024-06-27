@@ -1,0 +1,111 @@
+{
+  "name": "exceptions",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "exc",
+  "sourceRoot": "apps/exceptions/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/exceptions",
+        "index": "apps/exceptions/src/index.html",
+        "main": "apps/exceptions/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/exceptions/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/exceptions/public"
+          }
+        ],
+        "styles": ["apps/exceptions/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/exceptions/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/exceptions/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "port": 4023,
+        "publicHost": "http://localhost:4023"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "exceptions:build:production"
+        },
+        "development": {
+          "buildTarget": "exceptions:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "exceptions:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/exceptions/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "exceptions:build",
+        "port": 4023,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "exceptions:build:development"
+        },
+        "production": {
+          "buildTarget": "exceptions:build:production"
+        }
+      }
+    }
+  }
+}
