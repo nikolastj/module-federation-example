@@ -1,4 +1,5 @@
 {
   "exceptions": "http://localhost:4203",
-  "index-build": "http://localhost:4201"
+  "index-build": "http://localhost:4201",
+  "index-prod-dashboard": "http://localhost:4202"
 }

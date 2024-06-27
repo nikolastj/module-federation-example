@@ -4,6 +4,13 @@ import { AppComponent } from './app.component';
 
 export const appRoutes: Route[] = [
   {
+    path: 'index-prod-dashboard',
+    loadChildren: () =>
+      loadRemoteModule('index-prod-dashboard', './Routes').then(
+        (m) => m.remoteRoutes
+      ),
+  },
+  {
     path: 'index-build',
     loadChildren: () =>
       loadRemoteModule('index-build', './Routes').then((m) => m.remoteRoutes),

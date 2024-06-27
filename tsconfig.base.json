@@ -20,6 +20,9 @@
       ],
       "index-build/Routes": [
         "apps/index-build/src/app/remote-entry/entry.routes.ts"
+      ],
+      "index-prod-dashboard/Routes": [
+        "apps/index-prod-dashboard/src/app/remote-entry/entry.routes.ts"
       ]
     }
   },
